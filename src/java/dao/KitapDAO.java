@@ -1,0 +1,128 @@
+package dao;
+
+import entity.Kitap;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import org.mariadb.jdbc.internal.logging.Logger;
+import util.DBConnection;
+
+public class KitapDAO {
+
+    public List<Kitap> findAll() {
+        List<Kitap> kitapList = new ArrayList<>();
+        DBConnection connector = new DBConnection();
+        Connection connection = connector.connect();
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("select * from kitapsatis.kitaplar");
+            while (rs.next()) {
+                Kitap t = new Kitap();
+                t.setKitapId(rs.getInt("kitap_id"));
+                t.setKitapAdi(rs.getString("kitap_adi"));
+                t.setKitapYazari(rs.getString("kitap_yazari"));
+                t.setKitapSayfaSayisi(rs.getInt("kitap_sayfa_sayisi"));
+                t.setKitapCikisTarihi(rs.getString("kitap_cikis_tarihi"));
+                t.setKitapEklenmeTarihi(rs.getString("kitap_eklenme_tarihi"));
+                t.setKitapStokSayisi(rs.getInt("kitap_stok_sayisi"));
+                kitapList.add(t);
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQL ERROR!");
+        }
+        return kitapList;
+    }
+
+    /*public List<Kitap> getKitaplar(){
+        List<Kitap> klist = new ArrayList<>();
+        DBConnection db = new DBConnection();
+        Connection c = db.connect();
+        try {
+            Statement st = c.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM student_tracker.kitaplar");
+            while(rs.next())
+            {
+                Kitap tmp = new Kitap(rs.getInt("kitap_id"), rs.getString("kitap_adi"),
+                        rs.getString("kitap_yazari"), rs.getInt("kitap_sayfa_sayisi"),
+                        rs.getDate("kitap_cikis_tarihi"), rs.getDate("kitap_eklenme_tarihi"),
+                        rs.getInt("kitap_stok_sayisi"));
+                        klist.add(tmp);
+            }
+        } catch (SQLException e) {
+        }
+        return klist;
+    }*/
+    public void insert(Kitap kitap) {
+
+        DBConnection connector = new DBConnection();
+        Connection connection = connector.connect();
+        PreparedStatement myst = null;
+
+        try {
+
+            String sql = "insert into kitapsatis.kitaplar (kitap_id, kitap_adi, kitap_yazari, kitap_sayfa_sayisi, kitap_cikis_tarihi, kitap_eklenme_tarihi, kitap_stok_sayisi) values (?, ?, ?, ? ,?, ?, ?)";
+
+            myst = connection.prepareStatement(sql);
+
+            myst.setInt(1, kitap.getKitapId());
+            myst.setString(2, kitap.getKitapAdi());
+            myst.setString(3, kitap.getKitapYazari());
+            myst.setInt(4, kitap.getKitapSayfaSayisi());
+            myst.setString(5, kitap.getKitapCikisTarihi());
+            myst.setString(6, kitap.getKitapEklenmeTarihi());
+            myst.setInt(7, kitap.getKitapStokSayisi());
+
+            myst.execute();
+
+        } catch (SQLException ex) {
+            System.out.println("SQL ERROR!");
+        }
+
+    }
+
+    public void delete(Kitap kit) {
+        DBConnection connector = new DBConnection();
+        Connection connection = connector.connect();
+
+        try {
+
+            Statement st = connection.createStatement();
+            st.executeUpdate("delete from kitapsatis.kitaplar where kitap_id=" + kit.getKitapId());
+
+        } catch (SQLException ex) {
+            System.out.println("SQL ERROR!");
+        }
+    }
+
+    public void update(Kitap kitap) {
+        DBConnection connector = new DBConnection();
+        Connection connection = connector.connect();
+
+        try {
+
+            Statement st = connection.createStatement();
+            String sql = "UPDATE `kitapsatis`.`kitaplar` SET `kitap_adi` = ?, `kitap_yazari` = ?, `kitap_sayfa_sayisi` = ?, `kitap_cikis_tarihi` = ?, `kitap_eklenme_tarihi` = ?, `kitap_stok_sayisi` = ? WHERE (`kitap_id` = ?)";
+            //String sql = "insert into kitapsatis.kitaplar (kitap_id, kitap_adi, kitap_yazari, kitap_sayfa_sayisi, kitap_cikis_tarihi, kitap_eklenme_tarihi, kitap_stok_sayisi) values (?, ?, ?, ? ,?, ?, ?)";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, kitap.getKitapAdi());
+            statement.setString(2, kitap.getKitapYazari());
+            statement.setInt(3, kitap.getKitapSayfaSayisi());
+            statement.setString(4, kitap.getKitapCikisTarihi());
+            statement.setString(5, kitap.getKitapEklenmeTarihi());
+            statement.setInt(6, kitap.getKitapStokSayisi());
+            statement.setInt(7, kitap.getKitapId());
+
+            statement.executeQuery();
+
+        } catch (SQLException ex) {
+            System.out.println("SQL ERROR!");
+        }
+    }
+
+}

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:of="http://omnifaces.org/functions">
+    <h:head>
+        <title>Kitap Satis Otomasyon</title>
+        <h:outputStylesheet library="css" name="bootstrap.css" />
+        <h:outputScript library="js" name="jquery-3.4.1.js"/>
+        <h:outputScript library="js" name="bootstrap.js"/>
+    </h:head>
+    <h:body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h:form>
+                        <h:dataTable styleClass="table table-striped table-hover" value="#{kitapController.kitapList}" var="kitap">
+                            <h:column>
+                                <f:facet name="header">Kitap ID</f:facet>
+                                    #{kitap.kitapId}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Kitap Adi</f:facet>
+                                <h:commandLink action="#{kitapController.updateForm(kitap)}" value="#{kitap.kitapAdi}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Yazar</f:facet>
+                                    #{kitap.kitapYazari}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Sayfa</f:facet>
+                                    #{kitap.kitapSayfaSayisi}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Cikis Tarihi</f:facet>
+                                    #{kitap.kitapCikisTarihi}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Eklenme Tarihi</f:facet>
+                                    #{kitap.kitapEklenmeTarihi}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Stok</f:facet>
+                                    #{kitap.kitapStokSayisi}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">DELETE</f:facet>
+                                <h:commandButton styleClass="btn btn-sm btn-danger" value="Sil" action="#{kitapController.delete(kitap)}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+                <div class="col-md-6">
+                    <h:form>
+                        <div class="form-group">
+                            <h:inputHidden value="#{kitapController.kitap.kitapId}" />
+                            <label for="inputName">Kitap ID</label>
+                            <h:inputText styleClass="form-control" value="#{kitapController.kitap.kitapId}" /> 
+                            <label for="inputName">Kitap Adi</label>
+                            <h:inputText styleClass="form-control" value="#{kitapController.kitap.kitapAdi}" /> 
+                            <label for="inputName">Kitap Yazari</label>
+                            <h:inputText styleClass="form-control" value="#{kitapController.kitap.kitapYazari}" />
+                            <label for="inputName">Kitap Sayfa Sayisi</label>
+                            <h:inputText styleClass="form-control" value="#{kitapController.kitap.kitapSayfaSayisi}" />
+                            <label for="inputName">Kitap Cikis Tarihi</label>
+                            <h:inputText styleClass="form-control" value="#{kitapController.kitap.kitapCikisTarihi}" />
+                            <label for="inputName">Kitap Eklenme Tarihi</label>
+                            <h:inputText styleClass="form-control" value="#{kitapController.kitap.kitapEklenmeTarihi}" />
+                            <label for="inputName">Kitap Stok Sayisi</label>
+                            <h:inputText styleClass="form-control" value="#{kitapController.kitap.kitapStokSayisi}" />
+                        </div>
+                        <div class="form-group">
+                            <h:commandButton styleClass="btn btn-primary" value="Guncelle" action="#{kitapController.update}" />
+                            <h:commandButton styleClass="btn btn-primary" value="Olustur" action="#{kitapController.create}" />
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+
