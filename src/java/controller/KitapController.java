@@ -50,12 +50,6 @@ public class KitapController implements Serializable{
         return "index";
     }
 
-    /*public KitapController() {
-        
-        this.klist = new ArrayList<>();
-        kdao = new KitapDAO();
-    }*/
-
     public List<Kitap> getKitapList() {
         this.kitapList = this.getKitapDao().findAll();
         return kitapList;
@@ -75,28 +69,6 @@ public class KitapController implements Serializable{
     public void setKitapDao(KitapDAO kitapDao) {
         this.kitapDao = kitapDao;
     }
-   
-    
-    
-    /*public List<Kitap> getKlist() {
-        this.kitapList = this.getKdao().findAll();
-        return kitapList;
-    }
-
-    public void setKlist(List<Kitap> klist) {
-        this.kitapList = kitapList;
-    }
-
-    public KitapDAO getKdao() {
-        if(this.kitapDao == null){
-            this.kitapDao = new KitapDAO();
-        }
-        return kitapDao;
-    }
-
-    public void setKdao(KitapDAO kdao) {
-        this.kitapDao = kitapDao;
-    }*/
 
     public Kitap getKitap() {
         if(this.kitap == null){

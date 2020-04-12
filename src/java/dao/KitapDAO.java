@@ -37,25 +37,6 @@ public class KitapDAO {
         return kitapList;
     }
 
-    /*public List<Kitap> getKitaplar(){
-        List<Kitap> klist = new ArrayList<>();
-        DBConnection db = new DBConnection();
-        Connection c = db.connect();
-        try {
-            Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM student_tracker.kitaplar");
-            while(rs.next())
-            {
-                Kitap tmp = new Kitap(rs.getInt("kitap_id"), rs.getString("kitap_adi"),
-                        rs.getString("kitap_yazari"), rs.getInt("kitap_sayfa_sayisi"),
-                        rs.getDate("kitap_cikis_tarihi"), rs.getDate("kitap_eklenme_tarihi"),
-                        rs.getInt("kitap_stok_sayisi"));
-                        klist.add(tmp);
-            }
-        } catch (SQLException e) {
-        }
-        return klist;
-    }*/
     public void insert(Kitap kitap) {
 
         DBConnection connector = new DBConnection();
@@ -106,7 +87,6 @@ public class KitapDAO {
 
             Statement st = connection.createStatement();
             String sql = "UPDATE `kitapsatis`.`kitaplar` SET `kitap_adi` = ?, `kitap_yazari` = ?, `kitap_sayfa_sayisi` = ?, `kitap_cikis_tarihi` = ?, `kitap_eklenme_tarihi` = ?, `kitap_stok_sayisi` = ? WHERE (`kitap_id` = ?)";
-            //String sql = "insert into kitapsatis.kitaplar (kitap_id, kitap_adi, kitap_yazari, kitap_sayfa_sayisi, kitap_cikis_tarihi, kitap_eklenme_tarihi, kitap_stok_sayisi) values (?, ?, ?, ? ,?, ?, ?)";
 
             PreparedStatement statement = connection.prepareStatement(sql);
 
