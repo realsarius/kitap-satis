@@ -29,24 +29,32 @@ public class KitapController implements Serializable{
     private Kitap kitap;
     
     public String updateForm(Kitap kit){
-        this.kitap = kit;
-        
+        this.kitap = kit; 
         return "index";
     }
+    public String deleteConfirm(Kitap kit){
+    this.kitap=kit;
+    return "confirm_delete";
     
-    public String delete(Kitap kit){
-        this.getKitapDao().delete(kit);
+    }
+    
+    public String delete(){
         
+        this.getKitapDao().delete(this.kitap);
+          this.kitap=new Kitap();
+          
         return "index";
     }
     
     public String update(){
         this.getKitapDao().update(this.kitap);
+        this.kitap=new Kitap();
         return "index";
     }
     
     public String create(){
         this.getKitapDao().insert(this.kitap);
+        this.kitap=new Kitap();
         return "index";
     }
 

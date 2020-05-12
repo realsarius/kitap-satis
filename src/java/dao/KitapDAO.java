@@ -8,10 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import org.mariadb.jdbc.internal.logging.Logger;
 import util.DBConnection;
 
-public class KitapDAO {
+public class KitapDAO extends DBConnection {
 
     public List<Kitap> findAll() {
         List<Kitap> kitapList = new ArrayList<>();

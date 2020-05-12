@@ -11,6 +11,7 @@
         <h:outputStylesheet library="css" name="bootstrap.css" />
         <h:outputScript library="js" name="jquery-3.4.1.js"/>
         <h:outputScript library="js" name="bootstrap.js"/>
+        <link href="assets/css/bootstrap.css" type="text/css" rel="stylesheet"/>
     </h:head>
     <h:body>
         <div class="container-fluid">
@@ -48,7 +49,8 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">DELETE</f:facet>
-                                <h:commandButton styleClass="btn btn-sm btn-danger" value="Sil" action="#{kitapController.delete(kitap)}"/>
+                                
+                                <h:commandButton styleClass="btn btn-sm btn-danger" value="Sil" action="#{kitapController.deleteConfirm(kitap)}"/>
                             </h:column>
                         </h:dataTable>
                     </h:form>

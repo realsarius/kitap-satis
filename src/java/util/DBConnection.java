@@ -9,7 +9,7 @@ public class DBConnection {
 
         try {
             Class.forName("org.mariadb.jdbc.Driver").newInstance();
-            c = DriverManager.getConnection("jdbc:mariadb://localhost:3306/kitapsatis?user=root&password=password");
+            c = DriverManager.getConnection("jdbc:mariadb://localhost:3306/kitapsatis?user=root&password=123");
 
         } catch (IllegalAccessException | InstantiationException | SQLException | ClassNotFoundException e) {
         }
