@@ -5,10 +5,87 @@
  */
 package controller;
 
+import dao.YazarDAO;
+import entity.Yazar;
+import java.io.Serializable;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
 /**
  *
  * @author pc
  */
-public class YazarController {
+@ManagedBean
+@SessionScoped
+public class YazarController implements Serializable{
+    
+    private List<Yazar> yazarList;
+    private YazarDAO yazarDao;
+    
+    private Yazar yazar;
+    
+    public String updateForm(Yazar yaz){
+        this.yazar = yaz; 
+        return "Yazar";
+    }
+    public String deleteConfirm(Yazar yaz){
+    this.yazar=yaz;
+    return "yazar_confirm_delete";
+    
+    }
+    
+    public String delete(){
+        
+        this.getYazarDao().delete(this.yazar);
+          this.yazar=new Yazar();
+          
+        return "Yazar";
+    }
+    
+    public String update(){
+        this.getYazarDao().update(this.yazar);
+        this.yazar=new Yazar();
+        return "Yazar";
+    }
+    
+    public String create(){
+        this.getYazarDao().insert(this.yazar);
+        this.yazar=new Yazar();
+        return "Yazar";
+    }
+
+    public List<Yazar> getYazarList() {
+        this.yazarList = this.getYazarDao().findAll();
+        return yazarList;
+    }
+
+    public void setYazarList(List<Yazar> yazarList) {
+        this.yazarList = yazarList;
+    }
+
+    public YazarDAO getYazarDao() {
+        if(this.yazarDao == null){
+            this.yazarDao = new YazarDAO();
+        }
+        return yazarDao;
+    }
+
+    public void setYazarDao(YazarDAO yazarDao) {
+        this.yazarDao = yazarDao;
+    }
+
+    public Yazar getYazar() {
+        if(this.yazar == null){
+            this.yazar = new Yazar();
+        }
+        return yazar;
+    }
+
+    public void setYazar(Yazar yazar) {
+        this.yazar = yazar;
+    }
+    
+     
     
 }

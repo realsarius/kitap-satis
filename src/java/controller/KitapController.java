@@ -30,11 +30,11 @@ public class KitapController implements Serializable{
     
     public String updateForm(Kitap kit){
         this.kitap = kit; 
-        return "index";
+        return "Kitap";
     }
     public String deleteConfirm(Kitap kit){
     this.kitap=kit;
-    return "confirm_delete";
+    return "kitap_confirm_delete";
     
     }
     
@@ -43,19 +43,19 @@ public class KitapController implements Serializable{
         this.getKitapDao().delete(this.kitap);
           this.kitap=new Kitap();
           
-        return "index";
+        return "Kitap";
     }
     
     public String update(){
         this.getKitapDao().update(this.kitap);
         this.kitap=new Kitap();
-        return "index";
+        return "Kitap";
     }
     
     public String create(){
         this.getKitapDao().insert(this.kitap);
         this.kitap=new Kitap();
-        return "index";
+        return "Kitap";
     }
 
     public List<Kitap> getKitapList() {
