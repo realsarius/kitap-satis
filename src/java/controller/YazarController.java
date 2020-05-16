@@ -27,11 +27,11 @@ public class YazarController implements Serializable{
     
     public String updateForm(Yazar yaz){
         this.yazar = yaz; 
-        return "Yazar";
+        return "/admin/Yazar";
     }
     public String deleteConfirm(Yazar yaz){
     this.yazar=yaz;
-    return "yazar_confirm_delete";
+    return "/admin/yazar_confirm_delete";
     
     }
     
@@ -40,19 +40,19 @@ public class YazarController implements Serializable{
         this.getYazarDao().delete(this.yazar);
           this.yazar=new Yazar();
           
-        return "Yazar";
+        return "/admin/Yazar";
     }
     
     public String update(){
         this.getYazarDao().update(this.yazar);
         this.yazar=new Yazar();
-        return "Yazar";
+        return "/admin/Yazar";
     }
     
     public String create(){
         this.getYazarDao().insert(this.yazar);
         this.yazar=new Yazar();
-        return "Yazar";
+        return "/admin/Yazar";
     }
 
     public List<Yazar> getYazarList() {
