@@ -7,49 +7,54 @@
                 template="/Template/admin.xhtml">
 
     <ui:define name="content">
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <h:form>
+                    <h:form id="kitap-table">
                         <h:dataTable styleClass="table table-striped table-hover" value="#{kitapController.kitapList}" var="kitap">
-                            <h:column>
-                                <f:facet name="header">Kitap ID</f:facet>
-                                    #{kitap.kitapId}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Kitap Adi</f:facet>
-                                <h:commandLink action="#{kitapController.updateForm(kitap)}" value="#{kitap.kitapAdi}" />
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Yazar</f:facet>
-                                    #{kitap.kitapYazari}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Sayfa</f:facet>
-                                    #{kitap.kitapSayfaSayisi}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Cikis Tarihi</f:facet>
-                                    #{kitap.kitapCikisTarihi}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Eklenme Tarihi</f:facet>
-                                    #{kitap.kitapEklenmeTarihi}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Stok</f:facet>
-                                    #{kitap.kitapStokSayisi}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">DELETE</f:facet>
+                            <div class="whiteText">
+                                <h:column>
+                                    <f:facet name="header"><p>Kitap ID</p></f:facet>
+                                    <p>#{kitap.kitapId}</p>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>Kitap Adi</p></f:facet>
+                                    <h:commandLink class="whiteText" action="#{kitapController.updateForm(kitap)}" value="#{kitap.kitapAdi}" >
+                                        <f:ajax execute="@this" render="kitap-form"/>
+                                    </h:commandLink>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>Yazar</p></f:facet>
+                                    <p>#{kitap.kitapYazari}</p>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>Sayfa</p></f:facet>
+                                    <p>#{kitap.kitapSayfaSayisi}</p>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>Cikis Tarihi</p></f:facet>
+                                    <p>#{kitap.kitapCikisTarihi}</p>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>Eklenme Tarihi</p></f:facet>
+                                    <p>#{kitap.kitapEklenmeTarihi}</p>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>Stok</p></f:facet>
+                                    <p>#{kitap.kitapStokSayisi}</p>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>DELETE</p></f:facet>
 
-                                <h:commandButton styleClass="btn btn-sm btn-danger" value="Sil" action="#{kitapController.deleteConfirm(kitap)}"/>
-                            </h:column>
+                                    <h:commandButton styleClass="btn btn-sm btn-danger" value="Sil" action="#{kitapController.deleteConfirm(kitap)}"/>
+                                </h:column>
+                            </div>
                         </h:dataTable>
                     </h:form>
                 </div>
                 <div class="col-md-6">
-                    <h:form>
+                    <h:form id="kitap-form">
                         <div class="form-group">
                             <h:inputHidden value="#{kitapController.kitap.kitapId}" />
                             <label for="inputName">Kitap ID</label>
@@ -68,8 +73,12 @@
                             <h:inputText styleClass="form-control" value="#{kitapController.kitap.kitapStokSayisi}" />
                         </div>
                         <div class="form-group">
-                            <h:commandButton styleClass="btn btn-primary" value="Guncelle" action="#{kitapController.update}" />
-                            <h:commandButton styleClass="btn btn-primary" value="Olustur" action="#{kitapController.create}" />
+                            <h:commandButton styleClass="btn btn-primary" value="Guncelle" action="#{kitapController.update}" >
+                                <f:ajax execute="kitap-form" render="kitap-form kitap-table"/>
+                            </h:commandButton>
+                            <h:commandButton styleClass="btn btn-primary" value="Olustur" action="#{kitapController.create}" >
+                                <f:ajax execute="kitap-form" render="kitap-form kitap-table"/>
+                            </h:commandButton>
                         </div>
                     </h:form>
                 </div>

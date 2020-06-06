@@ -25,9 +25,8 @@ public class YazarController implements Serializable{
     
     private Yazar yazar;
     
-    public String updateForm(Yazar yaz){
+    public void updateForm(Yazar yaz){
         this.yazar = yaz; 
-        return "/admin/Yazar";
     }
     public String deleteConfirm(Yazar yaz){
     this.yazar=yaz;

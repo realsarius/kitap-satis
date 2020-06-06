@@ -10,30 +10,34 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <h:form>
+                    <h:form id="yazar-table">
                         <h:dataTable styleClass="table table-striped table-hover" value="#{yazarController.yazarList}" var="yazar">
-                            <h:column>
-                                <f:facet name="header">Yazar ID</f:facet>
-                                    #{yazar.yazar_id}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Yazar Adi</f:facet>
-                                <h:commandLink action="#{yazarController.updateForm(yazar)}" value="#{yazar.yazar_adi}" />
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Yazar Hakkinda</f:facet>
-                                    #{yazar.yazar_info}
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">DELETE</f:facet>
+                            <div class="whiteText">
+                                <h:column>
+                                    <f:facet name="header"><p>Yazar ID</p></f:facet>
+                                    <p>#{yazar.yazar_id}</p>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>Yazar Adi</p></f:facet>
+                                    <h:commandLink class="whiteText" action="#{yazarController.updateForm(yazar)}" value="#{yazar.yazar_adi}"> 
+                                        <f:ajax execute="@this" render="yazar-form"/>
+                                    </h:commandLink>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>Yazar Hakkinda</p></f:facet>
+                                    <p> #{yazar.yazar_info} </p>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>DELETE</p></f:facet>
 
-                                <h:commandButton styleClass="btn btn-sm btn-danger" value="Sil" action="#{yazarController.deleteConfirm(yazar)}"/>
-                            </h:column>
+                                    <h:commandButton styleClass="btn btn-sm btn-danger" value="Sil" action="#{yazarController.deleteConfirm(yazar)}"/>
+                                </h:column>
+                            </div>
                         </h:dataTable>
                     </h:form>
                 </div>
                 <div class="col-md-6">
-                    <h:form>
+                    <h:form id="yazar-form">
                         <div class="form-group">
                             <h:inputHidden value="#{yazarController.yazar.yazar_id}" />
                             <label for="inputName">Yazar ID</label>
@@ -45,8 +49,12 @@
 
                         </div>
                         <div class="form-group">
-                            <h:commandButton styleClass="btn btn-primary" value="Guncelle" action="#{yazarController.update}" />
-                            <h:commandButton styleClass="btn btn-primary" value="Olustur" action="#{yazarController.create}" />
+                            <h:commandButton styleClass="btn btn-primary" value="Guncelle" action="#{yazarController.update}" >
+                                <f:ajax execute="@this" render="yazar-table yazar-form"/>
+                            </h:commandButton>
+                            <h:commandButton styleClass="btn btn-primary" value="Olustur" action="#{yazarController.create}" >
+                                <f:ajax execute="@this" render="yazar-table yazar-form"/>
+                            </h:commandButton>
                         </div>
                     </h:form>
                 </div>

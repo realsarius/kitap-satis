@@ -28,9 +28,8 @@ public class KitapController implements Serializable{
     
     private Kitap kitap;
     
-    public String updateForm(Kitap kit){
+    public void updateForm(Kitap kit){
         this.kitap = kit; 
-        return "/admin/Kitap";
     }
     public String deleteConfirm(Kitap kit){
     this.kitap=kit;
@@ -46,16 +45,14 @@ public class KitapController implements Serializable{
         return "/admin/Kitap";
     }
     
-    public String update(){
+    public void update(){
         this.getKitapDao().update(this.kitap);
         this.kitap=new Kitap();
-        return "/admin/Kitap";
     }
     
-    public String create(){
+    public void create(){
         this.getKitapDao().insert(this.kitap);
         this.kitap=new Kitap();
-        return "/admin/Kitap";
     }
 
     public List<Kitap> getKitapList() {

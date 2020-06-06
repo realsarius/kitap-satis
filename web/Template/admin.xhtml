@@ -16,22 +16,27 @@ and open the template in the editor.
         <h:outputScript library="js" name="bootstrap.js"/>
         <link href="assets/css/bootstrap.css" type="text/css" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        
+        <style>
+            .Bimage{background-image: url("../Template/images/library.jpg");}
+            .whiteText{ color: #80bdff; font-size: 18px;}
+            label{color: white;}
+            p{color:white; font-size: 18px;}
+        </style>
     </h:head>
-    <h:body>
-
+    <h:body styleClass="Bimage">
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="background-color: hsla(50, 33%, 25%, 0.75);">
+            <ul class="navbar-nav">
+                <h:form>
+                    <h:commandButton style="padding: 10px;" styleClass="btn btn-primary" value="Ana Sayfa" action="index"/>
+                    <h:commandButton style="padding: 10px;" styleClass="btn btn-primary" value="Kitap Sayfasi" action="/admin/Kitap"/>
+                    <h:commandButton style="padding: 10px;" styleClass="btn btn-primary" value="Yazar Sayfasi" action="/admin/Yazar"/>
+                    <h:commandButton style="padding: 10px;" styleClass="btn btn-primary" value="Cikis Butonu" action="/faces/kullanici/index"/>
+                </h:form>
+            </ul>
+        </nav>
         <div>
-            <h:form>
-                <h:commandButton value="Ana Sayfa" action="index"/>
-                <h:commandButton value="Kitap Sayfasi" action="/admin/Kitap"/>
-                <h:commandButton value="Yazar Sayfasi" action="/admin/Yazar"/>
-                <h:commandButton value="Cikis Butonu" action="/kullanici/index"/>
-
-
-            </h:form>
 
             <ui:insert name="content">
-
             </ui:insert>
         </div>
     </h:body>
