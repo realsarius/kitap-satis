@@ -42,16 +42,14 @@ public class YazarController implements Serializable{
         return "/admin/Yazar";
     }
     
-    public String update(){
+    public void update(){
         this.getYazarDao().update(this.yazar);
         this.yazar=new Yazar();
-        return "/admin/Yazar";
     }
     
-    public String create(){
+    public void create(){
         this.getYazarDao().insert(this.yazar);
         this.yazar=new Yazar();
-        return "/admin/Yazar";
     }
 
     public List<Yazar> getYazarList() {

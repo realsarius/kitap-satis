@@ -50,10 +50,10 @@
                         </div>
                         <div class="form-group">
                             <h:commandButton styleClass="btn btn-primary" value="Guncelle" action="#{yazarController.update}" >
-                                <f:ajax execute="@this" render="yazar-table yazar-form"/>
+                                <f:ajax execute="yazar-form" render="yazar-form yazar-table"/>
                             </h:commandButton>
                             <h:commandButton styleClass="btn btn-primary" value="Olustur" action="#{yazarController.create}" >
-                                <f:ajax execute="@this" render="yazar-table yazar-form"/>
+                                <f:ajax execute="yazar-form" render="yazar-form yazar-table"/>
                             </h:commandButton>
                         </div>
                     </h:form>
