@@ -33,14 +33,34 @@ CREATE TABLE IF NOT EXISTS `address` (
 -- tablo yapısı dökülüyor kitapsatis.adminler
 CREATE TABLE IF NOT EXISTS `adminler` (
   `admin_id` int(5) unsigned NOT NULL AUTO_INCREMENT,
-  `admin_kullanici` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `admin_email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `admin_sifre` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- kitapsatis.adminler: ~0 rows (yaklaşık) tablosu için veriler indiriliyor
+-- kitapsatis.adminler: ~1 rows (yaklaşık) tablosu için veriler indiriliyor
 /*!40000 ALTER TABLE `adminler` DISABLE KEYS */;
+INSERT INTO `adminler` (`admin_id`, `admin_email`, `admin_sifre`) VALUES
+	(1, 'aydin@mail.com', '12345');
 /*!40000 ALTER TABLE `adminler` ENABLE KEYS */;
+
+-- tablo yapısı dökülüyor kitapsatis.category
+CREATE TABLE IF NOT EXISTS `category` (
+  `category_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `category_adi` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- kitapsatis.category: ~6 rows (yaklaşık) tablosu için veriler indiriliyor
+/*!40000 ALTER TABLE `category` DISABLE KEYS */;
+INSERT INTO `category` (`category_id`, `category_adi`) VALUES
+	(1, 'Psikoloji'),
+	(2, 'Gerilim'),
+	(3, 'Dram'),
+	(4, 'Fantastik'),
+	(5, 'Bilim kurgu'),
+	(6, 'Polisiye');
+/*!40000 ALTER TABLE `category` ENABLE KEYS */;
 
 -- tablo yapısı dökülüyor kitapsatis.customer
 CREATE TABLE IF NOT EXISTS `customer` (
@@ -87,13 +107,32 @@ INSERT INTO `kitaplar` (`kitap_id`, `kitap_adi`, `kitap_yazari`, `kitap_sayfa_sa
 	(16, 'İki Şehrin Hikayesi ', 'Charles Dickens', 952, '1859', '12 Mayıs 2020', 10);
 /*!40000 ALTER TABLE `kitaplar` ENABLE KEYS */;
 
+-- tablo yapısı dökülüyor kitapsatis.language
+CREATE TABLE IF NOT EXISTS `language` (
+  `language_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `language_adi` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`language_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- kitapsatis.language: ~7 rows (yaklaşık) tablosu için veriler indiriliyor
+/*!40000 ALTER TABLE `language` DISABLE KEYS */;
+INSERT INTO `language` (`language_id`, `language_adi`) VALUES
+	(1, 'Türkçe'),
+	(2, 'İngilizce'),
+	(3, 'İspanyolca'),
+	(4, 'Arapça'),
+	(5, 'Fransızca'),
+	(6, 'Japonca'),
+	(7, 'Almanca');
+/*!40000 ALTER TABLE `language` ENABLE KEYS */;
+
 -- tablo yapısı dökülüyor kitapsatis.yazar
 CREATE TABLE IF NOT EXISTS `yazar` (
   `yazar_id` int(2) unsigned zerofill NOT NULL AUTO_INCREMENT,
   `yazar_adi` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `yazar_info` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`yazar_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- kitapsatis.yazar: ~9 rows (yaklaşık) tablosu için veriler indiriliyor
 /*!40000 ALTER TABLE `yazar` DISABLE KEYS */;
