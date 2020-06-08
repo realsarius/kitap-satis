@@ -10,6 +10,7 @@ public class Kitap {
     private String kitapCikisTarihi;
     private String kitapEklenmeTarihi;
     private int kitapStokSayisi;
+    private int languageId;
 
     public Kitap(int kitapId, String kitapAdi, String kitapYazari, int kitapSayfaSayisi, String kitapCikisTarihi, String kitapEklenmeTarihi, int kitapStokSayisi) {
         this.kitapId = kitapId;
@@ -23,6 +24,16 @@ public class Kitap {
 
     public Kitap() {
     }
+
+    public int getLanguageId() {
+        return languageId;
+    }
+
+    public void setLanguageId(int languageId) {
+        this.languageId = languageId;
+    }
+    
+    
 
 
     public int getKitapId() {

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/Template/admin.xhtml">
+
+    <ui:define name="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <h:form id="language-table">
+                        <h:dataTable styleClass="table table-striped table-hover" value="#{languageController.languageList}" var="language">
+                            <div class="whiteText">
+                                <h:column>
+                                    <f:facet name="header"><p>Dil ID</p></f:facet>
+                                    <p>#{language.languageId}</p>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>Dil Adi</p></f:facet>
+                                    <h:commandLink class="whiteText" action="#{languageController.updateForm(language)}" value="#{language.languageAdi}"> 
+                                        <f:ajax execute="@this" render="language-form"/>
+                                    </h:commandLink>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header"><p>DELETE</p></f:facet>
+
+                                    <h:commandButton styleClass="btn btn-sm btn-danger" value="Sil" action="#{languageController.deleteConfirm(language)}"/>
+                                </h:column>
+                            </div>
+                        </h:dataTable>
+                    </h:form>
+                </div>
+                <div class="col-md-6">
+                    <h:form id="language-form">
+                        <div class="form-group">
+                            <h:inputHidden value="#{languageController.language.languageId}" />
+                            <label for="inputName">Dil ID</label>
+                            <h:inputText styleClass="form-control" value="#{languageController.language.languageId}" /> 
+                            <label for="inputName">Dil Adi</label>
+                            <h:inputText styleClass="form-control" value="#{languageController.language.languageAdi}" /> 
+
+                        </div>
+                        <div class="form-group">
+                            <h:commandButton styleClass="btn btn-primary" value="Guncelle" action="#{languageController.update}" >
+                                <f:ajax execute="language-form" render="language-form language-table"/>
+                            </h:commandButton>
+                            <h:commandButton styleClass="btn btn-primary" value="Olustur" action="#{languageController.create}" >
+                                <f:ajax execute="language-form" render="language-form language-table"/>
+                            </h:commandButton>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>
+
