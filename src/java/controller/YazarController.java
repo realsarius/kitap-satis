@@ -15,6 +15,7 @@ import javax.faces.bean.SessionScoped;
 /**
  *
  * @author pc
+ * @ManegedBean java ile xhtml sayfaları arasındaki köprü olarak kullanıldı
  */
 @ManagedBean
 @SessionScoped
