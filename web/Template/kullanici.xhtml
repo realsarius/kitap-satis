@@ -24,8 +24,11 @@ and open the template in the editor.
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="background-color: hsla(50, 33%, 25%, 0.75);">
             <ul class="navbar-nav">
                 <h:form>
-                    <h:commandButton style="padding: 10px;" styleClass="btn btn-primary" value="Ana Sayfa" action="index"/>
-                    <h:commandButton style="padding: 10px;" styleClass="btn btn-primary" value="Giris Butonu" action="/admin/index"/>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <h:commandButton style="padding: 10px;" styleClass="btn btn-primary" value="Ana Sayfa" action="index"/>
+                        <h:commandButton style="padding: 10px;" styleClass="btn btn-primary" value="Admin Girisi" action="/admin/index"/>
+                        <h:commandButton style="padding: 10px;" styleClass="btn btn-primary" value="Cikis" action="/index"/>
+                    </div>
                 </h:form>
             </ul>
         </nav>
@@ -36,7 +39,6 @@ and open the template in the editor.
         </div>
         <div class="text-center">
             <h1 class="display-1" style="color: white;">Ana Sayfa</h1>
-            <p style="color: white;">Resize this responsive page to see the effect!</p>
         </div>
 
         <div class="container">
@@ -44,17 +46,26 @@ and open the template in the editor.
                 <div class="col-sm-4">
                     <img src="Template/images/crime-and-punishment.jpg" height="180" width="150" class="rounded" alt="Cinque Terre"><a href="../admin/Kitap.xhtml">  </a></img>
                     <p style="color: white;">Suç ve Ceza</p>
-                    <p style="color: white;" class="display-4">29.99 TL</p>
+                    <p style="color: white;" class="display-4">29.99 €</p>
+                    <h:form>
+                        <h:commandButton style="padding: 10px;" styleClass="btn btn-secondary" value="Satın Al" action="/kullanici/satisbasarili"/>
+                    </h:form>
                 </div>
                 <div class="col-sm-4">
                     <img src="Template/images/dethly-hollows.jpg" height="180" width="150" class="rounded" alt="Cinque Terre"><a href="#"> </a></img>
                     <p style="color: white;">Harry Potter ve Ölüm Melekleri</p>
-                    <p style="color: white;" class="display-4">34.99 TL</p>
+                    <p style="color: white;" class="display-4">34.99 €</p>
+                    <h:form>
+                        <h:commandButton style="padding: 10px;" styleClass="btn btn-secondary" value="Satın Al" action="/kullanici/satisbasarili"/>
+                    </h:form>
                 </div>
                 <div class="col-sm-4">
                     <img src="Template/images/harry_potter_hbp_scholastic_edition.jpg" height="180" width="150" class="rounded" alt="Cinque Terre"><a href="#"> </a> </img>
                     <p style="color: white;">Harry Potter ve Melez Prens</p>
-                    <p style="color: white;" class="display-4">39.99 TL</p>
+                    <p style="color: white;" class="display-4">39.99 €</p>
+                    <h:form>
+                        <h:commandButton style="padding: 10px;" styleClass="btn btn-secondary" value="Satın Al" action="/kullanici/satisbasarili"/>
+                    </h:form>
                 </div>
             </div>
         </div> 
