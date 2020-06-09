@@ -45,7 +45,7 @@ public class KitapDAO extends DBConnection {
 
         try {
 
-            String sql = "insert into kitapsatis.kitaplar (kitap_id, kitap_adi, kitap_yazari, kitap_sayfa_sayisi, kitap_cikis_tarihi, kitap_eklenme_tarihi, kitap_stok_sayisi, language_id) values (?, ?, ?, ? ,?, ?, ?, ?)";
+            String sql = "insert into kitapsatis.kitaplar (kitap_id, kitap_adi, kitap_yazari, kitap_sayfa_sayisi, kitap_cikis_tarihi, kitap_eklenme_tarihi, kitap_stok_sayisi) values (?, ?, ?, ? ,?, ?, ?)";
 
             myst = connection.prepareStatement(sql);
 
@@ -56,7 +56,6 @@ public class KitapDAO extends DBConnection {
             myst.setString(5, kitap.getKitapCikisTarihi());
             myst.setString(6, kitap.getKitapEklenmeTarihi());
             myst.setInt(7, kitap.getKitapStokSayisi());
-            myst.setInt(8, kitap.getLanguageId());
 
             myst.execute();
 
